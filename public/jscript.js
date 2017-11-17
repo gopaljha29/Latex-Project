@@ -41,8 +41,10 @@ $form.validate({
 
     submitHandler: function() {
         $successMsg.show();
+        $('#thesis_form')[0].submit();
         $('#thesis_form input[type="text"]').val('');
         $('#department').val('');
+
     }
 
 });
