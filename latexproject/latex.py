@@ -3,11 +3,16 @@ import os
 import fileinput
 
 
+myDict={'title': ' ','author' : ' ','pgb' : ' ','univ' : ' ','date' : ' '}
 myList=[]
-
 with open('input1.txt','r') as fin:
     for line in fin.readlines():
         myList.append(line)
+i=0
+for key,value in myDict.items():
+    myDict[key]=myList[i]
+    i=i+1
+
 test =r'''\documentclass{article}
 \usepackage[utf8]{inputenc}
 \begin{document}
@@ -15,25 +20,26 @@ test =r'''\documentclass{article}
     \begin{center}
         \vspace*{2.5cm}
         
-        \textbf{%s}
+        \textbf{%(title)s}
         
         \vspace{1.5cm}
         
-        \textbf{%s}
+        \textbf{%(author)s}
         
         \vfill
         
         Project Given By\\
-        %s
+        %(pgb)s
         
         \vspace{0.8cm}
         
-        %s\\
-        %s\\
+        %(univ)s\\
+        %(date)s\\
         
     \end{center}
 \end{titlepage}
-\end{document}'''%(myList[0],myList[1],myList[2],myList[3],myList[4])
+\end{document}'''
+
 
 with open('preamble.tex','w') as fout:
-    fout.write(test)
+    fout.write(test % (myDict))
