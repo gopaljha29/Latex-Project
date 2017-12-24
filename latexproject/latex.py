@@ -16,6 +16,8 @@ for key,value in myDict.items():
 test =r'''\documentclass{article}
 \usepackage[utf8]{inputenc}
 \begin{document}
+
+%instead of using the below code we can try to make a new command in our custom class.
 	\begin{titlepage}
     \begin{center}
         \vspace*{2.5cm}
